@@ -14,19 +14,86 @@
     <p id="lb">
         Use this page to practice your hacking skills.
     </p>
-    <textarea rows="50" cols="50">
+    <textarea rows="50" cols="50" id="hacker-output" readonly>
 </textarea>
     <p>
         Connections:
         <br>
-    <textarea cols="25" rows="1.5625">
-    </textarea>
+    <textarea cols="25" rows="2" id="connections" readonly></textarea>
     </p>
     <p>
         Command console:
         <br>
-    <textarea cols="25" rows="1.5625" id="console">
-    </textarea><button onclick="reset()">Reset</button>
+    <textarea cols="25" rows="2" id="console"></textarea><button onclick="reset()">Reset</button>
     </p>
+    <script>
+        var hackerCode = [
+            "function exploit(target) {",
+            "  const payload = encrypt(buffer);",
+            "  if (bypass(firewall)) {",
+            "    inject(payload, target.port);",
+            "    return decrypt(target.data);",
+            "  }",
+            "}",
+            "class SecurityOverride {",
+            "  constructor(node) {",
+            "    this.access = node.root;",
+            "    this.key = generateKey(256);",
+            "  }",
+            "  breach() {",
+            "    tunnel.connect(this.access);",
+            "    return this.key.crack();",
+            "  }",
+            "}",
+            "var nodes = scanNetwork(subnet);",
+            "for (var i = 0; i < nodes.length; i++) {",
+            "  if (nodes[i].vulnerable) {",
+            "    exploit(nodes[i]);",
+            "    log('Access granted: ' + nodes[i].ip);",
+            "  }",
+            "}",
+            "// Decrypting mainframe...",
+            "sys.override(kernel.access);",
+            "proxy.route(encrypted_tunnel);",
+            "firewall.disable(port, token);",
+            "database.dump(credentials);",
+            "// Connection established..."
+        ];
+        var lineIndex = 0;
+        var charIndex = 0;
+        var output = document.getElementById("hacker-output");
+        var connections = document.getElementById("connections");
+        var connectionCount = 0;
+
+        document.addEventListener("keydown", function(e) {
+            if (document.activeElement.id === "console") return;
+            e.preventDefault();
+            if (lineIndex < hackerCode.length) {
+                var currentLine = hackerCode[lineIndex];
+                output.value += currentLine[charIndex];
+                charIndex++;
+                if (charIndex >= currentLine.length) {
+                    output.value += "\n";
+                    charIndex = 0;
+                    lineIndex++;
+                    connectionCount++;
+                    if (connectionCount % 5 === 0) {
+                        var ip = Math.floor(Math.random()*256) + "." + Math.floor(Math.random()*256) + "." + Math.floor(Math.random()*256) + "." + Math.floor(Math.random()*256);
+                        connections.value += ip + "\n";
+                    }
+                }
+                output.scrollTop = output.scrollHeight;
+            }
+        });
+
+        function reset() {
+            output.value = "";
+            connections.value = "";
+            document.getElementById("console").value = "";
+            lineIndex = 0;
+            charIndex = 0;
+            connectionCount = 0;
+        }
+    </script>
  </body>
  </html>
