@@ -1,3 +1,6 @@
 # Hweb template
 ## Keywords
-` hi `
+| Keyword | Defenition |
+| :-- | :-- |
+| ` {{YOURNAME}} `| Your name |
+| ` {{Topic [[topic]]}} ` | The topic of the area |
