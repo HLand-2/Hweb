@@ -3,4 +3,4 @@
 | Keyword | Defenition |
 | :-- | :-- |
 | ` {{YOURNAME}} `| Your name |
-| ` {{Topic [[topic]]}} ` | The topic of the area |
+| ` {{Topic 1-4}} ` | The topic of the current section |
