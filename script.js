@@ -1,14 +1,15 @@
+const name = "{{YOURNAME}}"
 const topics = [
-    "",
-    "",
-    "",
-    ""
+    "{{TOPIC 1}}",
+    "{{TOPIC 2}}",
+    "{{TOPIC 3}}",
+    "{{TOPIC 4}}"
 ]
 const data = [
-    "",
-    "",
-    "",
-    ""
+    "{{PARAGRAPH 1}}",
+    "{{PARAGRAPH 2}}",
+    "{{PARAGRAPH 3}}",
+    "{{PARAGRAPH 4}}"
 ]
 const style = {
     mdbc: "Main background colour",
@@ -45,4 +46,5 @@ document.getElementById("t33").innerText = data[2]
 document.getElementById("t4").innerText = topics[3];
 document.getElementById("t44").innerText = data[3]
 
-document.getElementById("sl").innerText = styles
+document.getElementById("sl").innerText = styles;
+document.getElementsByClassName("t").innerText = `All about ${name}`;
