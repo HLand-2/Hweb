@@ -7,5 +7,6 @@
 
 Use the script.js constants for editing NOT DIRECLY IN THE HTML, otherwise your data will be overwritten.
 
-```bash
+``` bash
  A Hweb template
+```
