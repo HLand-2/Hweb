@@ -1,0 +1,26 @@
+{
+  "your-name": "Alex Smith",
+  "page-content": [
+    { 
+      "topic-title": "Web Development",
+      "sub-points": [
+        { "point-title": "JavaScript", "point-text": "The logic layer of the web." },
+        { "point-title": "React", "point-text": "A component-based library for building UIs." }
+      ]
+    },
+    {
+      "topic-title": "Overall programming",
+      "sub-points": [
+        { "point-title": "Python", "point-text": "The most easy and understandable back-end language."}
+      ]
+    }
+  ],
+  "page-style": {
+    "main-background-colour": "#121212",
+    "main-text-colour": "#e0e0e0",
+    "title-background-colour": "#1f1f1f",
+    "title-text-colour": "#bb86fc",
+    "subtitle-background-colour": "#2c2c2c",
+    "subtitle-text-colour": "#03dac6"
+  }
+}
