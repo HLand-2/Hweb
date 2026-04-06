@@ -1,19 +1,39 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <style id="sl"></style>
-    <script src="script.js"></script>
-    <title class="t">All about {{YOURNAME}}</title>
-  </head>
-  <body>
-    <h1 class="t">All about {{YOURNAME}}</h1>
-    <h2 id="t1">{{Topic 1}}</h2>
-    <div id="t11"></div>
-    <h2 id="t2">{{Topic 2}}</h2>
-    <div id="t22"></div>
-    <h2 id="t3">{{Topic 3}}</h2>
-    <div id="t33"></div>
-    <h2 id="t4">{{Topic 4}}</h2>
-    <div id="t44"></div>
-  </body>
-</html>
+<script type="text/template" id="main-template">
+  <h1 class="t">All about <%= data['your-name'] %></h1>
+  
+  <div class="controls" style="margin-bottom: 20px;">
+    <button onclick="window.print()">Print to PDF</button>
+  </div>
+
+  <nav id="toc">
+    <h3 style="margin-top:0">Contents</h3>
+    <ul id="toc-list" style="list-style:none; padding:0;">
+      <% _.each(data['page-content'], function(section, i) { %>
+        <li>
+          <a href="#t<%= i+1 %>"><%= section['topic-title'] %></a>
+          <ul style="list-style:none; padding-left:15px;">
+            <% _.each(section['sub-points'], function(point, j) { %>
+              <li><a href="#t<%= i+1 %><%= j+1 %>"><%= point['point-title'] %></a></li>
+            <% }); %>
+          </ul>
+        </li>
+      <% }); %>
+    </ul>
+  </nav>
+
+  <div id="content-container">
+    <% _.each(data['page-content'], function(section, i) { %>
+      <section>
+        <h2 id="t<%= i+1 %>"><%= section['topic-title'] %></h2>
+        <% _.each(section['sub-points'], function(point, j) { %>
+          <h3 id="t<%= i+1 %><%= j+1 %>" onclick="toggle('p<%=i+1%><%=j+1%>', 'i<%=i+1%><%=j+1%>')" style="cursor:pointer">
+            <span class="icon" id="i<%=i+1%><%=j+1%>">▸</span> <%= point['point-title'] %>
+          </h3>
+          <p class="content-text" id="p<%=i+1%><%=j+1%>" style="display:none; padding-left:25px;"><%= point['point-text'] %></p>
+        <% }); %>
+      </section>
+    <% }); %>
+  </div>
+
+  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Top ↑</button>
+</script>
